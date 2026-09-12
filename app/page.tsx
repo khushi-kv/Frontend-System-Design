@@ -1,9 +1,10 @@
 "use client";
 
-import {  useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { MemeCard } from "./lld-patterns/shimmer/components/MemeCard";
 import { CardShimmer } from "./lld-patterns/shimmer/components/CardShimmer";
 import Modal from "./lld-patterns/Modal";
+import Accordian from "./lld-patterns/Accordian";
 
 interface Meme {
   imageUrl: string;
@@ -66,11 +67,17 @@ export default function Home() {
       <Modal title="Delete" isOpen={isOpen} onClose={handleClose}>
         <p>Are you sure?</p>
         <div className="flex gap-x-2">
-        <button>Delete</button>
-        <button onClick={handleClose} className="cursor-pointer">Close</button>
+          <button>Delete</button>
+          <button onClick={handleClose} className="cursor-pointer">Close</button>
         </div>
       </Modal>
-
+      <Accordian
+        mode="multiple"
+        items={[
+          { title: 'What is React?', content: 'A JS library for UIs.' },
+          { title: 'What is a hook?', content: 'A function to use state/effects.' },
+        ]}
+      />
     </div>
   );
 }
